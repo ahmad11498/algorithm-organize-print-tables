@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Medical Test Report</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .header {
+        display: flex;
+        justify-content: center;
+      }
+      .patient-info {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 25px;
+      }
+      .container,
+      .btnContainer {
+        width: 210mm;
+        margin: 20px auto;
+      }
+      .pageA4 {
+        width: 210mm;
+        height: 297mm;
+        padding: 0.74in;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      h1,
+      h2 {
+        text-align: left;
+      }
+      h2 {
+        text-decoration: underline;
+      }
+      h3 {
+        margin-top: 25px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      .btn {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .logo {
+        width: 100px;
+      }
+      .logo img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+      .testGroup {
+        margin-top: 50px;
+        padding-bottom: 25px;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .pagesContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .testsContainer {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+      }
+      @media print {
+        .pageA4 {
+          height: 100vh !important;
+          page-break-before: always;
+        }
+        body > *:not(.pagesContainer) {
+          display: none !important;
+        }
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.debug.js"></script>
+  </head>
+  <body>
+    <div id="content" class="container">
+      <!-- Laboratory Name and Logo -->
+      <div class="header">
+        <div class="logo">
+          <img src="./medical-lab.png" alt="Laboratory Logo" />
+        </div>
+      </div>
+
+      <!-- Patient Information -->
+      <div class="patient-info">
+        <p>Patient: <b> John Doe </b></p>
+        <p>Visit Date: <b> January 1, 2024 </b></p>
+        <p>Patient ID: <b> 123456 </b></p>
+      </div>
+
+      <!-- <h1>Medical Test Report</h1> -->
+      <div class="testsContainer">
+        <div class="testGroup">
+          <h2>Blood Tests</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Result</th>
+                <th>Reference Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hemoglobin</td>
+                <td>13.5 g/dL</td>
+                <td>12.0 - 15.5 g/dL</td>
+              </tr>
+              <tr>
+                <td>White Blood Cell Count</td>
+                <td>7.2 x10^3/µL</td>
+                <td>4.0 - 11.0 x10^3/µL</td>
+              </tr>
+              <tr>
+                <td>Platelet Count</td>
+                <td>250 x10^3/µL</td>
+                <td>150 - 450 x10^3/µL</td>
+              </tr>
+              <!-- Add more rows for other blood tests -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="testGroup">
+          <h2>Urine Tests</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Result</th>
+                <th>Reference Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Urine Specific Gravity</td>
+                <td>1.015</td>
+                <td>1.005 - 1.030</td>
+              </tr>
+              <tr>
+                <td>Urine pH</td>
+                <td>6.0</td>
+                <td>4.5 - 8.0</td>
+              </tr>
+              <!-- Add more rows for other urine tests -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="testGroup">
+          <h2>Liver Function Tests</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Result</th>
+                <th>Reference Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alanine Aminotransferase (ALT)</td>
+                <td>25 U/L</td>
+                <td>0 - 40 U/L</td>
+              </tr>
+              <tr>
+                <td>Aspartate Aminotransferase (AST)</td>
+                <td>30 U/L</td>
+                <td>0 - 35 U/L</td>
+              </tr>
+              <!-- Add more rows for other liver function tests -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="testGroup">
+          <h2>CBC (Complete Blood Count)</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Result</th>
+                <th>Reference Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hemoglobin</td>
+                <td>13.5 g/dL</td>
+                <td>12.0 - 15.5 g/dL</td>
+              </tr>
+              <tr>
+                <td>White Blood Cell Count</td>
+                <td>7.2 x10^3/µL</td>
+                <td>4.0 - 11.0 x10^3/µL</td>
+              </tr>
+              <tr>
+                <td>Platelet Count</td>
+                <td>250 x10^3/µL</td>
+                <td>150 - 450 x10^3/µL</td>
+              </tr>
+              <!-- Add more rows for other CBC tests -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="testGroup">
+          <h2>Chemistry</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Result</th>
+                <th>Reference Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Blood Glucose</td>
+                <td>110 mg/dL</td>
+                <td>70 - 100 mg/dL</td>
+              </tr>
+              <tr>
+                <td>Sodium</td>
+                <td>140 mmol/L</td>
+                <td>135 - 145 mmol/L</td>
+              </tr>
+              <!-- Add more rows for other chemistry tests -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="testGroup">
+          <h2>Liver Function Tests</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Result</th>
+                <th>Reference Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Alanine Aminotransferase (ALT)</td>
+                <td>25 U/L</td>
+                <td>0 - 40 U/L</td>
+              </tr>
+              <tr>
+                <td>Aspartate Aminotransferase (AST)</td>
+                <td>30 U/L</td>
+                <td>0 - 35 U/L</td>
+              </tr>
+              <!-- Add more rows for other liver function tests -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="testGroup">
+          <h2>Lumbar Tests</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Result</th>
+                <th>Reference Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Lumbar Puncture Opening Pressure</td>
+                <td>15 cm H2O</td>
+                <td>10 - 20 cm H2O</td>
+              </tr>
+              <!-- Add more rows for other lumbar tests -->
+            </tbody>
+          </table>
+        </div>
+
+        <div class="testGroup">
+          <h2>Toxicology</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Test Name</th>
+                <th>Result</th>
+                <th>Reference Range</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Drug A</td>
+                <td>Negative</td>
+                <td>Negative</td>
+              </tr>
+              <tr>
+                <td>Drug B</td>
+                <td>Positive</td>
+                <td>Negative</td>
+              </tr>
+              <!-- Add more rows for other toxicology tests -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="footer">
+        <h3>Medical Test Report</h3>
+        <p>
+          page: <b class="currentPage">1</b> <b>of</b>
+          <b class="totalPages">1</b>
+        </p>
+      </div>
+      <!-- Add more sections for other types of tests -->
+    </div>
+
+    <div class="btnContainer">
+      <!-- Your test sections here -->
+
+      <button id="cmd" class="btn">Organize</button>
+    </div>
+    <div class="pagesContainer">
+      <div class="pageA4" style="display: none"></div>
+    </div>
+    <script>
+      //   $(document).ready(function () {});
+      $(".btn").click(function () {
+        // var doc = new jsPDF();
+        // doc.addHTML(document.body, function () {
+        //   doc.save("medical_test_report.pdf");
+        // });
+
+        var heights = [];
+        $(".testGroup").each(function () {
+          var height = $(this).outerHeight(true);
+          heights.push(height);
+        });
+        console.log(heights);
+
+        var headerHeight = $(".header").outerHeight(true);
+        var footerHeight = $(".footer").outerHeight(true);
+        var patientInfoHeight = $(".patient-info").outerHeight(true);
+        var outerSectionsHeight =
+          headerHeight + footerHeight + patientInfoHeight;
+
+        var A4W = $(".pageA4").outerWidth(true) - 200;
+        var A4H = $(".pageA4").outerHeight(true) - 200;
+
+        var remainingHeight = A4H - outerSectionsHeight;
+
+        console.log("Header height: ", headerHeight);
+        console.log("Footer height: ", footerHeight);
+        console.log("Patient info height: ", patientInfoHeight);
+        console.log("Header + Footer + Patient: ", outerSectionsHeight);
+        console.log("A4 Height: ", A4H);
+        console.log("Remaining Height: ", remainingHeight);
+
+        var pagesCount = 1;
+        var pageTopTestGroup = [0];
+        let sum = 0;
+        for (let i = 0; i < heights.length; i++) {
+          sum += heights[i];
+          if (sum > remainingHeight) {
+            console.log("sum: ", sum);
+            pageTopTestGroup.push(i);
+            console.log(i);
+            sum = heights[i];
+            pagesCount += 1;
+            console.log("pages: ", pagesCount);
+          }
+        }
+        console.log("top tests: ", pageTopTestGroup);
+
+        $(".pagesContainer").empty();
+
+        for (let i = 0; i < pagesCount; i++) {
+          $(".pagesContainer").append($("<div class='pageA4'></div>"));
+        }
+        const header = $(".header").clone();
+        const footer = $(".footer").clone();
+        const patientInfo = $(".patient-info").clone();
+
+        // Append header, footer, and patient-info to each .pageA4 element
+        $(".pageA4").each(function (index) {
+          $(this).append(header.clone());
+          $(this).append(patientInfo.clone());
+          $(this).append($("<div class='testsContainer'></div>"));
+          $(this).append(footer.clone());
+
+          // Update footer content with current page number and total pages count
+          var currentPageNumber = index + 1;
+          $(this).find(".currentPage").text(currentPageNumber);
+          $(this).find(".totalPages").text(pagesCount);
+        });
+
+        var testGroupsToRender = [];
+        var testGroupsLength = $(".testGroup").length;
+        console.log(testGroupsLength);
+        var currentTestRange;
+        // Append testGroups to corresponding .pageA4
+        for (let i = 1; i <= pageTopTestGroup.length; i++) {
+          if (i >= pageTopTestGroup.length) {
+            console.log("inside");
+            currentTestRange = testGroupsLength + 1 - pageTopTestGroup[i - 1];
+          } else {
+            currentTestRange = pageTopTestGroup[i] - pageTopTestGroup[i - 1];
+          }
+          testGroupsToRender.push(currentTestRange);
+        }
+        console.log("tests to print", testGroupsToRender);
+
+        // Append test groups to corresponding .pageA4
+        var currentPageIndex = 0;
+        var currentTestGroupIndex = 0;
+        $(".testGroup").each(function (index) {
+          var testGroupCount = testGroupsToRender[currentPageIndex];
+          $(".pageA4")
+            .eq(currentPageIndex)
+            .find(".testsContainer")
+            .append($(this).clone());
+          currentTestGroupIndex++;
+          if (currentTestGroupIndex >= testGroupCount) {
+            currentPageIndex++;
+            currentTestGroupIndex = 0;
+          }
+        });
+        $("#content").remove();
+        $(".btnContainer").remove();
+        $(".pagesContainer").printElement();
+      });
+    </script>
+  </body>
+</html>

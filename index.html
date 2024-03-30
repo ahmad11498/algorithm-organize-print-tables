@@ -40,30 +40,42 @@
         flex-direction: column;
         justify-content: space-between;
       }
-      h1,
-      h2 {
+      .groupName {
         text-align: left;
-      }
-      h2 {
         text-decoration: underline;
+        font-weight: 700;
+        font-size: 19px;
+        padding-bottom: 20px;
       }
-      h3 {
+      .footerHeader {
         margin-top: 25px;
+        font-weight: 700;
       }
-      table {
+      .groupBody {
         width: 100%;
         border-collapse: collapse;
         margin-top: 20px;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ddd;
+        text-align: left;
       }
-      table,
-      th,
-      td {
+      .tableRow {
         border: 1px solid #ddd;
         padding: 8px;
         text-align: left;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
       }
-      th {
+      .dataItem {
+        width: 33%;
+      }
+      .groupHeader {
         background-color: #f2f2f2;
+        font-weight: 700;
       }
       .btn {
         padding: 10px 20px;
@@ -82,8 +94,7 @@
         object-fit: contain;
       }
       .testGroup {
-        margin-top: 50px;
-        padding-bottom: 25px;
+        padding: 25px 0;
       }
       .footer {
         display: flex;
@@ -129,224 +140,329 @@
         <p>Patient ID: <b> 123456 </b></p>
       </div>
 
-      <!-- <h1>Medical Test Report</h1> -->
       <div class="testsContainer">
         <div class="testGroup">
-          <h2>Blood Tests</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Reference Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Hemoglobin</td>
-                <td>13.5 g/dL</td>
-                <td>12.0 - 15.5 g/dL</td>
-              </tr>
-              <tr>
-                <td>White Blood Cell Count</td>
-                <td>7.2 x10^3/µL</td>
-                <td>4.0 - 11.0 x10^3/µL</td>
-              </tr>
-              <tr>
-                <td>Platelet Count</td>
-                <td>250 x10^3/µL</td>
-                <td>150 - 450 x10^3/µL</td>
-              </tr>
-              <!-- Add more rows for other blood tests -->
-            </tbody>
-          </table>
+          <div class="groupName">Blood Tests</div>
+          <div class="groupHeader tableRow data">
+            <div class="dataItem">Test Name</div>
+            <div class="dataItem">Result</div>
+            <div class="dataItem">Reference Range</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Hemoglobin</div>
+            <div class="dataItem">13.5 g/dL</div>
+            <div class="dataItem">12.0 - 15.5 g/dL</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">White Blood Cell Count</div>
+            <div class="dataItem">7.2 x10^3/µL</div>
+            <div class="dataItem">4.0 - 11.0 x10^3/µL</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Platelet Count</div>
+            <div class="dataItem">250 x10^3/µL</div>
+            <div class="dataItem">150 - 450 x10^3/µL</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Platelet Count</div>
+            <div class="dataItem">250 x10^3/µL</div>
+            <div class="dataItem">150 - 450 x10^3/µL</div>
+          </div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
         </div>
 
         <div class="testGroup">
-          <h2>Urine Tests</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Reference Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Urine Specific Gravity</td>
-                <td>1.015</td>
-                <td>1.005 - 1.030</td>
-              </tr>
-              <tr>
-                <td>Urine pH</td>
-                <td>6.0</td>
-                <td>4.5 - 8.0</td>
-              </tr>
-              <!-- Add more rows for other urine tests -->
-            </tbody>
-          </table>
+          <div class="groupName">Urine Tests</div>
+          <div class="groupHeader tableRow data">
+            <div class="dataItem">Test Name</div>
+            <div class="dataItem">Result</div>
+            <div class="dataItem">Reference Range</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Urine Specific Gravity</div>
+            <div class="dataItem">1.015</div>
+            <div class="dataItem">1.005 - 1.030</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Urine pH</div>
+            <div class="dataItem">6.0</div>
+            <div class="dataItem">4.5 - 8.0</div>
+          </div>
         </div>
 
         <div class="testGroup">
-          <h2>Liver Function Tests</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Reference Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Alanine Aminotransferase (ALT)</td>
-                <td>25 U/L</td>
-                <td>0 - 40 U/L</td>
-              </tr>
-              <tr>
-                <td>Aspartate Aminotransferase (AST)</td>
-                <td>30 U/L</td>
-                <td>0 - 35 U/L</td>
-              </tr>
-              <!-- Add more rows for other liver function tests -->
-            </tbody>
-          </table>
+          <div class="groupName">Liver Function Tests</div>
+          <div class="groupHeader tableRow data">
+            <div class="dataItem">Test Name</div>
+            <div class="dataItem">Result</div>
+            <div class="dataItem">Reference Range</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Alanine Aminotransferase (ALT)</div>
+            <div class="dataItem">25 U/L</div>
+            <div class="dataItem">0 - 40 U/L</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Aspartate Aminotransferase (AST)</div>
+            <div class="dataItem">30 U/L</div>
+            <div class="dataItem">0 - 35 U/L</div>
+          </div>
         </div>
 
         <div class="testGroup">
-          <h2>CBC (Complete Blood Count)</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Reference Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Hemoglobin</td>
-                <td>13.5 g/dL</td>
-                <td>12.0 - 15.5 g/dL</td>
-              </tr>
-              <tr>
-                <td>White Blood Cell Count</td>
-                <td>7.2 x10^3/µL</td>
-                <td>4.0 - 11.0 x10^3/µL</td>
-              </tr>
-              <tr>
-                <td>Platelet Count</td>
-                <td>250 x10^3/µL</td>
-                <td>150 - 450 x10^3/µL</td>
-              </tr>
-              <!-- Add more rows for other CBC tests -->
-            </tbody>
-          </table>
+          <div class="groupName">CBC (Complete Blood Count)</div>
+          <div class="groupHeader tableRow data">
+            <div class="dataItem">Test Name</div>
+            <div class="dataItem">Result</div>
+            <div class="dataItem">Reference Range</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Hemoglobin</div>
+            <div class="dataItem">13.5 g/dL</div>
+            <div class="dataItem">12.0 - 15.5 g/dL</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">White Blood Cell Count</div>
+            <div class="dataItem">7.2 x10^3/µL</div>
+            <div class="dataItem">4.0 - 11.0 x10^3/µL</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Platelet Count</div>
+            <div class="dataItem">250 x10^3/µL</div>
+            <div class="dataItem">150 - 450 x10^3/µL</div>
+          </div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
         </div>
 
         <div class="testGroup">
-          <h2>Chemistry</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Reference Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Blood Glucose</td>
-                <td>110 mg/dL</td>
-                <td>70 - 100 mg/dL</td>
-              </tr>
-              <tr>
-                <td>Sodium</td>
-                <td>140 mmol/L</td>
-                <td>135 - 145 mmol/L</td>
-              </tr>
-              <!-- Add more rows for other chemistry tests -->
-            </tbody>
-          </table>
+          <div class="groupName">Chemistry</div>
+          <div class="groupHeader tableRow data">
+            <div class="dataItem">Test Name</div>
+            <div class="dataItem">Result</div>
+            <div class="dataItem">Reference Range</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Blood Glucose</div>
+            <div class="dataItem">110 mg/dL</div>
+            <div class="dataItem">70 - 100 mg/dL</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Sodium</div>
+            <div class="dataItem">140 mmol/L</div>
+            <div class="dataItem">135 - 145 mmol/L</div>
+          </div>
         </div>
 
         <div class="testGroup">
-          <h2>Liver Function Tests</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Reference Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Alanine Aminotransferase (ALT)</td>
-                <td>25 U/L</td>
-                <td>0 - 40 U/L</td>
-              </tr>
-              <tr>
-                <td>Aspartate Aminotransferase (AST)</td>
-                <td>30 U/L</td>
-                <td>0 - 35 U/L</td>
-              </tr>
-              <!-- Add more rows for other liver function tests -->
-            </tbody>
-          </table>
+          <div class="groupName">Liver Function Tests</div>
+          <div class="groupHeader tableRow data">
+            <div class="dataItem">Test Name</div>
+            <div class="dataItem">Result</div>
+            <div class="dataItem">Reference Range</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Alanine Aminotransferase (ALT)</div>
+            <div class="dataItem">25 U/L</div>
+            <div class="dataItem">0 - 40 U/L</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Aspartate Aminotransferase (AST)</div>
+            <div class="dataItem">30 U/L</div>
+            <div class="dataItem">0 - 35 U/L</div>
+          </div>
         </div>
 
         <div class="testGroup">
-          <h2>Lumbar Tests</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Reference Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Lumbar Puncture Opening Pressure</td>
-                <td>15 cm H2O</td>
-                <td>10 - 20 cm H2O</td>
-              </tr>
-              <!-- Add more rows for other lumbar tests -->
-            </tbody>
-          </table>
+          <div class="groupName">Lumbar Tests</div>
+          <div class="groupHeader tableRow data">
+            <div class="dataItem">Test Name</div>
+            <div class="dataItem">Result</div>
+            <div class="dataItem">Reference Range</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Lumbar Puncture Opening Pressure</div>
+            <div class="dataItem" class="groupName">15 cm divO</div>
+            <div class="dataItem" class="groupName">10 - 20 cm divO</div>
+          </div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
+          <div class="data">Test 1</div>
         </div>
 
         <div class="testGroup">
-          <h2>Toxicology</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Test Name</th>
-                <th>Result</th>
-                <th>Reference Range</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Drug A</td>
-                <td>Negative</td>
-                <td>Negative</td>
-              </tr>
-              <tr>
-                <td>Drug B</td>
-                <td>Positive</td>
-                <td>Negative</td>
-              </tr>
-              <!-- Add more rows for other toxicology tests -->
-            </tbody>
-          </table>
+          <div class="groupName">Toxicology</div>
+          <div class="groupHeader tableRow data">
+            <div class="dataItem">Test Name</div>
+            <div class="dataItem">Result</div>
+            <div class="dataItem">Reference Range</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug A</div>
+            <div class="dataItem">Negative</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
+        </div>
+
+        <div class="testGroup">
+          <div class="groupName">Toxicology</div>
+          <div class="groupHeader tableRow data">
+            <div class="dataItem">Test Name</div>
+            <div class="dataItem">Result</div>
+            <div class="dataItem">Reference Range</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug A</div>
+            <div class="dataItem">Negative</div>
+            <div class="dataItem">Negative</div>
+          </div>
+          <div class="tableRow data">
+            <div class="dataItem">Drug B</div>
+            <div class="dataItem">Positive</div>
+            <div class="dataItem">Negative</div>
+          </div>
         </div>
       </div>
 
       <div class="footer">
-        <h3>Medical Test Report</h3>
+        <div class="footerHeader">Medical Test Report</div>
         <p>
           page: <b class="currentPage">1</b> <b>of</b>
           <b class="totalPages">1</b>
@@ -360,23 +476,53 @@
 
       <button id="cmd" class="btn">Organize</button>
     </div>
+
     <div class="pagesContainer">
       <div class="pageA4" style="display: none"></div>
     </div>
+
     <script>
+      function splitDataIntoGroups($originalTestGroup, remainingHeight) {
+        var $dataElements = $originalTestGroup.find(".data");
+        var newDataGroups = [];
+        var currentGroupHeight = 0;
+        var $currentGroup = $("<div class='testGroup'></div>");
+
+        $dataElements.each(function (index, element) {
+          var $dataElement = $(element);
+          var dataElementHeight = $dataElement.outerHeight(true);
+
+          if (currentGroupHeight + dataElementHeight <= remainingHeight) {
+            $currentGroup.append($dataElement.clone()); // Clone to preserve original structure
+            currentGroupHeight += dataElementHeight;
+          } else {
+            newDataGroups.push($currentGroup);
+            $currentGroup = $("<div class='testGroup'></div>");
+            $currentGroup.append($dataElement.clone());
+            currentGroupHeight = dataElementHeight;
+          }
+        });
+
+        if ($currentGroup.children().length > 0) {
+          newDataGroups.push($currentGroup);
+        }
+
+        return newDataGroups;
+      }
       //   $(document).ready(function () {});
       $(".btn").click(function () {
         // var doc = new jsPDF();
         // doc.addHTML(document.body, function () {
         //   doc.save("medical_test_report.pdf");
         // });
+        var printerMargins = 250;
 
         var heights = [];
         $(".testGroup").each(function () {
           var height = $(this).outerHeight(true);
           heights.push(height);
         });
-        console.log(heights);
+        // console.log(heights);
 
         var headerHeight = $(".header").outerHeight(true);
         var footerHeight = $(".footer").outerHeight(true);
@@ -384,17 +530,45 @@
         var outerSectionsHeight =
           headerHeight + footerHeight + patientInfoHeight;
 
-        var A4W = $(".pageA4").outerWidth(true) - 200;
-        var A4H = $(".pageA4").outerHeight(true) - 200;
+        var A4W = $(".pageA4").outerWidth(true) - printerMargins;
+        var A4H = $(".pageA4").outerHeight(true) - printerMargins;
 
         var remainingHeight = A4H - outerSectionsHeight;
 
-        console.log("Header height: ", headerHeight);
-        console.log("Footer height: ", footerHeight);
-        console.log("Patient info height: ", patientInfoHeight);
-        console.log("Header + Footer + Patient: ", outerSectionsHeight);
-        console.log("A4 Height: ", A4H);
-        console.log("Remaining Height: ", remainingHeight);
+        // console.log("Header height: ", headerHeight);
+        // console.log("Footer height: ", footerHeight);
+        // console.log("Patient info height: ", patientInfoHeight);
+        // console.log("Header + Footer + Patient: ", outerSectionsHeight);
+        // console.log("A4 Height: ", A4H);
+        // console.log("Remaining Height: ", remainingHeight);
+
+        // solve the too long tests
+        for (let i = heights.length - 1; i >= 0; i--) {
+          // Iterate in reverse order
+          if (heights[i] >= remainingHeight) {
+            // console.log(
+            //   "Height at index " + i + " exceeds remaining height:",
+            //   heights[i]
+            // );
+
+            var $originalTestGroup = $(".testGroup").eq(i);
+            var newDataGroups = splitDataIntoGroups(
+              $originalTestGroup,
+              remainingHeight
+            );
+
+            // Replace the original testGroup with the new ones
+            $originalTestGroup.replaceWith(newDataGroups);
+
+            // Recalculate remainingHeight after splitting the data
+            heights = [];
+            $(".testGroup").each(function () {
+              var height = $(this).outerHeight(true);
+              heights.push(height);
+            });
+            remainingHeight = A4H - outerSectionsHeight;
+          }
+        }
 
         var pagesCount = 1;
         var pageTopTestGroup = [0];
@@ -402,6 +576,9 @@
         for (let i = 0; i < heights.length; i++) {
           sum += heights[i];
           if (sum > remainingHeight) {
+            if (i == 0) {
+              pagesCount = 0;
+            }
             console.log("sum: ", sum);
             pageTopTestGroup.push(i);
             console.log(i);
@@ -410,7 +587,7 @@
             console.log("pages: ", pagesCount);
           }
         }
-        console.log("top tests: ", pageTopTestGroup);
+        // console.log("top tests: ", pageTopTestGroup);
 
         $(".pagesContainer").empty();
 
@@ -423,6 +600,7 @@
 
         // Append header, footer, and patient-info to each .pageA4 element
         $(".pageA4").each(function (index) {
+          console.log("Rendering pageA4 index:", index);
           $(this).append(header.clone());
           $(this).append(patientInfo.clone());
           $(this).append($("<div class='testsContainer'></div>"));
@@ -436,38 +614,55 @@
 
         var testGroupsToRender = [];
         var testGroupsLength = $(".testGroup").length;
-        console.log(testGroupsLength);
+        // console.log(testGroupsLength);
         var currentTestRange;
         // Append testGroups to corresponding .pageA4
         for (let i = 1; i <= pageTopTestGroup.length; i++) {
           if (i >= pageTopTestGroup.length) {
-            console.log("inside");
+            // console.log("inside");
             currentTestRange = testGroupsLength + 1 - pageTopTestGroup[i - 1];
           } else {
             currentTestRange = pageTopTestGroup[i] - pageTopTestGroup[i - 1];
           }
           testGroupsToRender.push(currentTestRange);
         }
-        console.log("tests to print", testGroupsToRender);
+        // console.log("tests to print", testGroupsToRender);
 
         // Append test groups to corresponding .pageA4
         var currentPageIndex = 0;
-        var currentTestGroupIndex = 0;
+        var currentHeight = 0;
         $(".testGroup").each(function (index) {
-          var testGroupCount = testGroupsToRender[currentPageIndex];
+          var $testGroup = $(this);
+          var testGroupHeight = $testGroup.outerHeight(true);
+
+          // Check if the current test group fits entirely on the current page
+          if (
+            currentHeight + testGroupHeight > remainingHeight &&
+            currentPageIndex <= $(".testGroup").length
+          ) {
+            if (
+              currentPageIndex == 0 &&
+              $(".pageA4").eq(currentPageIndex).find(".testGroup").length === 0
+            ) {
+            } else {
+              currentPageIndex++; // Move to the next page
+              currentHeight = 0; // Reset current height for the new page
+            }
+          }
+
+          // Append testGroup to corresponding .pageA4
           $(".pageA4")
             .eq(currentPageIndex)
             .find(".testsContainer")
-            .append($(this).clone());
-          currentTestGroupIndex++;
-          if (currentTestGroupIndex >= testGroupCount) {
-            currentPageIndex++;
-            currentTestGroupIndex = 0;
-          }
+            .append($testGroup);
+
+          // Update current height
+          currentHeight += testGroupHeight;
         });
+
         $("#content").remove();
         $(".btnContainer").remove();
-        $(".pagesContainer").printElement();
+        // $(".pagesContainer").printElement();
       });
     </script>
   </body>
